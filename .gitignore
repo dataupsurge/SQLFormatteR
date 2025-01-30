@@ -1,0 +1,64 @@
+# Project files
+.Rprofile
+.cache/
+.idea/
+.vscode/
+tmp/
+renv/
+.DS_store
+.env
+.Renviron
+build/
+src/rust/vendor
+
+# Python venv (used for pre-commit)
+venv/
+.venv/
+
+# History files
+*.Rhistory
+*.Rapp.history
+
+# Session Data files
+*.RData
+!data/*.RData
+
+# User-specific files
+*.Ruserdata
+*.Rproj
+
+# Example code in package build process
+*-Ex.R
+
+# Output files from R CMD build
+/*.tar.gz
+
+# Output files from R CMD check
+/*.Rcheck/
+
+# RStudio files
+*.Rproj.user/
+
+# produced vignettes
+vignettes/*.html
+vignettes/*.pdf
+
+# OAuth2 token, see https://github.com/hadley/httr/releases/tag/v0.3
+*.httr-oauth
+
+# knitr and R markdown default cache directories
+*_cache/
+/cache/
+
+# Temporary files created by R markdown
+*.utf8.md
+*.knit.md
+.Rproj.user
+packrat/lib*/
+.python-version
+inst/doc
+doc
+Meta
+docs
+/doc/
+/Meta/
