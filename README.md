@@ -1,8 +1,7 @@
   <!-- badges: start -->
   [![Codecov test coverage](https://codecov.io/gh/dataupsurge/SQLFormatteR/graph/badge.svg)](https://app.codecov.io/gh/dataupsurge/SQLFormatteR)
-  [![R-CMD-check](https://github.com/dataupsurge/SQLFormatteR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/dataupsurge/SQLFormatteR/actions/workflows/R-CMD-check.yaml)
+  [![R-CMD-check](https://github.com/dataupsurge/SQLFormatteR/actions/workflows/R-CMD-check/badge.svg)](https://github.com/dataupsurge/SQLFormatteR/actions/workflows/R-CMD-check)
   <!-- badges: end -->
-
 
 # SQLFormatteR
 
@@ -48,11 +47,11 @@ We welcome contributions! Feel free to submit issues or pull requests to improve
 
 ## License
 
-This project is licensed under the GPL3 License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-However, it depends on sqlformat-rs, which is licensed under MIT.
+It depends on sqlformat-rs, which is also licensed under MIT.
 
-You must retain the original MIT license notice when distributing this package.
+When distributing this package, you must retain the original MIT license notice.
 
 ---
 
