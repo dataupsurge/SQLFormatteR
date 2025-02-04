@@ -12,8 +12,9 @@ Description: A convenient interface for formatting 'SQL' queries directly
     including indentation, case formatting, and more, ensuring your 'SQL'
     queries are clean, readable, and consistent.
 License: MIT + file LICENSE
-URL: https://dataupsurge.github.io/SQLFormatteR/
-BugReports: https://https://github.com/dataupsurge/SQLFormatteR/issues
+URL: https://dataupsurge.github.io/SQLFormatteR/,
+    https://github.com/dataupsurge/SQLFormatteR
+BugReports: https://github.com/dataupsurge/SQLFormatteR/issues
 Imports: 
     assertthat
 Suggests: 

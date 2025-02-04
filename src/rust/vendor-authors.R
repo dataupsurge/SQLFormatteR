@@ -60,7 +60,7 @@ authors <- vapply(
   character(1)
 )
 lines <- sprintf(
-  " - %s %s: %s",
+  "- %s %s: %s",
   packages$name,
   packages$version,
   authors
@@ -72,8 +72,8 @@ footer <- sprintf(
   today_date
 )
 writeLines(
-  c("Authors of vendored cargo crates:", lines, footer),
-  file.path(opt$o, "AUTHORS")
+  c("# Authors of vendored cargo crates", lines, footer),
+  file.path(opt$o, "AUTHORS.md")
 )
 
 if (opt$verbose) {
