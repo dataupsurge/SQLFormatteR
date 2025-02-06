@@ -1,6 +1,6 @@
 Package: SQLFormatteR
 Title: Format SQL Queries
-Version: 0.0.1
+Version: 0.0.1.9000
 Authors@R: c(
     person("Morgan", "Durand", , "morgan@dataupsurge.com", role = c("aut", "cre", "cph")),
     person("Authors of the dependent Rust crates", role = "aut",
