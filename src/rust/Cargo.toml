@@ -11,3 +11,6 @@ name = 'SQLFormatteR'
 extendr-api = '0.7.1'
 extendr-macros = '0.7.1'
 sqlformat = '0.3.5'
+
+[profile.release]
+panic = "unwind"

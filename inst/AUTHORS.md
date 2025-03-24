@@ -12,4 +12,4 @@
 - unicode-ident 1.0.16: David Tolnay
 - unicode_categories 0.1.1: Sean Gillespie
 
-(This file was auto-generated from 'cargo metadata' on 2025-02-04)
+(This file was auto-generated from 'cargo metadata' on 2025-03-24)
