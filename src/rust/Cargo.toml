@@ -1,13 +1,14 @@
 [package]
-name = 'SQLFormatteR'
-version = '0.0.1'
-edition = '2021'
+name = "SQLFormatteR"
+version = "0.0.1"
+edition = "2021"
+rust-version = "1.78.0"
 
 [lib]
-crate-type = [ 'staticlib' ]
-name = 'SQLFormatteR'
+crate-type = [ "staticlib" ]
+name = "SQLFormatteR"
 
 [dependencies]
-extendr-api = '0.7.1'
-extendr-macros = '0.7.1'
-sqlformat = '0.3.5'
+extendr-api = "0.8.0"
+extendr-macros = "0.8.0"
+sqlformat = "0.3.5"
