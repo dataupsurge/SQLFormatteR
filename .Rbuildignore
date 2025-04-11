@@ -20,3 +20,6 @@ src/vendor/*
 ^src/rust/vendor$
 ^src/rust/vendor-authors.R$
 ^.*\.gitkeep$
+^src/rust/target$
+^src/Makevars$
+^src/Makevars\.win$
