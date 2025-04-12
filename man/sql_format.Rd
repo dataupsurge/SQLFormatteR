@@ -4,13 +4,7 @@
 \alias{sql_format}
 \title{Format an SQL Query}
 \usage{
-sql_format(
-  query,
-  indent = 2L,
-  uppercase = TRUE,
-  lines_between_queries = 1L,
-  ignore_case_convert = NULL
-)
+sql_format(query, indent = 2L, uppercase = TRUE, lines_between_queries = 1L)
 }
 \arguments{
 \item{query}{A character string containing the SQL query to format.}
@@ -23,9 +17,6 @@ be converted to uppercase (default: TRUE).}
 
 \item{lines_between_queries}{An integer specifying the number of blank
 lines between queries (default: 1).}
-
-\item{ignore_case_convert}{A logical value indicating whether to
-case conversion (default: NULL).}
 }
 \value{
 A formatted SQL query as a character string.

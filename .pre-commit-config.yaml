@@ -57,18 +57,18 @@ repos:
     -   id: rustfmt
         name: rustfmt
         description: Check if all files follow the rustfmt style
-        entry: cargo fmt --manifest-path src/rust/Cargo.toml --all -- --check --color always
+        entry: cargo fmt --manifest-path src/sqlformatter/Cargo.toml --all -- --check --color always
         language: system
         pass_filenames: false
     -   id: cargo-check
         name: cargo check
         description: Check if all files follow the rustfmt style
-        entry: cargo check --manifest-path src/rust/Cargo.toml 
+        entry: cargo check --manifest-path src/sqlformatter/Cargo.toml 
         language: system
         pass_filenames: false
     -   id: clippy
         name: clippy
         description: Lint rust sources
-        entry: cargo clippy --manifest-path src/rust/Cargo.toml
+        entry: cargo clippy --manifest-path src/sqlformatter/Cargo.toml
         language: system
         pass_filenames: false

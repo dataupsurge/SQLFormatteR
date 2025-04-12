@@ -1,7 +1,8 @@
-TARGET_DIR = ./rust/target
+TARGET_DIR = ./sqlformatter/target
 LIBDIR = $(TARGET_DIR)/release
-STATLIB = $(LIBDIR)/libSQLFormatteR.a
-PKG_LIBS = -L$(LIBDIR) -lSQLFormatteR
+STATLIB = $(LIBDIR)/libsqlformatter.a
+PKG_LIBS = -L$(LIBDIR) -lsqlformatter 
+PKG_CPPFLAGS = -DSTRICT_R_HEADERS -DR_NO_REMAP
 
 all: C_clean
 
@@ -11,10 +12,10 @@ CRAN_FLAGS=-j 2
 CARGOTMP = $(CURDIR)/.cargo
 
 $(STATLIB):
-	if [ -f ./rust/vendor.tar.xz ]; then \
-		tar xf rust/vendor.tar.xz && \
+	if [ -f ./sqlformatter/vendor.tar.xz ]; then \
+		tar xf sqlformatter/vendor.tar.xz && \
 		mkdir -p $(CARGOTMP) && \
-		cp rust/vendor-config.toml $(CARGOTMP)/config.toml; \
+		cp sqlformatter/vendor-config.toml $(CARGOTMP)/config.toml; \
 	fi
 
 	# In some environments, ~/.cargo/bin might not be included in PATH, so we need
@@ -24,7 +25,7 @@ $(STATLIB):
 		export CARGO_HOME=$(CARGOTMP); \
 	fi && \
 		export PATH="$(PATH):$(HOME)/.cargo/bin" && \
-			cargo build $(CRAN_FLAGS) --lib --release --manifest-path=./rust/Cargo.toml --target-dir $(TARGET_DIR) && \
+			cargo build $(CRAN_FLAGS) --lib --release --manifest-path=./sqlformatter/Cargo.toml --target-dir $(TARGET_DIR) && \
 			echo `cargo --version` && echo `rustc --version`;
 	if [ "$(NOT_CRAN)" != "true" ]; then \
 		rm -Rf $(CARGOTMP) && \
@@ -35,4 +36,4 @@ C_clean:
 	rm -Rf $(SHLIB) $(STATLIB) $(OBJECTS)
 
 clean:
-	rm -Rf $(SHLIB) $(STATLIB) $(OBJECTS) rust/target
+	rm -Rf $(SHLIB) $(STATLIB) $(OBJECTS) sqlformatter/target

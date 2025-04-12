@@ -9,7 +9,7 @@ renv/
 .env
 .Renviron
 build/
-src/rust/vendor
+src/sqlformatter/vendor
 
 # Python venv (used for pre-commit)
 venv/

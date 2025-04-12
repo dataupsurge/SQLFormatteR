@@ -5,7 +5,7 @@ project_venv := '.venv'
 python := project_venv + '/bin/python'
 pip := project_venv + '/bin/pip'
 pre_commit := project_venv + '/bin/pre-commit'
-rust_src_path := 'src/rust'
+rust_src_path := 'src/sqlformatter'
 vendor_path := rust_src_path + '/vendor'
 
 # Default to just --list
@@ -70,7 +70,7 @@ pre-commit:
 # Lint code
 lint: ## Perform code sanity checks if needed
 	R -e 'lintr::lint_package()'
-	R -e 'lintr::lint_dir("src/rust")'
+	R -e 'lintr::lint_dir("src/sqlformatter")'
 
 # Performs sanity check on code
 sanity-check: ## Perform code sanity checks if needed
@@ -97,7 +97,7 @@ document-vendor:
 # Style code
 style:
 	R -e 'styler::style_pkg()'
-	R -e 'styler::style_file("src/rust/vendor-authors.R")'
+	R -e 'styler::style_file("src/sqlformatter/vendor-authors.R")'
 
 # Build the package source
 build: build-vendor document-vendor document
@@ -109,7 +109,7 @@ build-pkgdown:
 
 build-vendor:
 	rm -rf {{vendor_path}} {{rust_src_path}}/vendor.tar.xz
-	cd src/rust && cargo vendor
+	cd src/sqlformatter && cargo vendor
 	rm -rf {{vendor_path}}/windows_x86_64_gnullvm/lib/* {{vendor_path}}/windows_*_msvc/lib/* {{vendor_path}}/windows_i686*/lib/*
 	cd {{rust_src_path}} && XZ_OPT='-9' tar -cJ --no-xattrs -f vendor.tar.xz vendor
 	rm -rf {{vendor_path}}

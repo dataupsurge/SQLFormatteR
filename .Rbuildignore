@@ -17,6 +17,6 @@
 ^README\.Rmd$
 ^CRAN-SUBMISSION$
 src/vendor/*
-^src/rust/vendor$
-^src/rust/vendor-authors.R$
+^src/sqlformatter/vendor$
+^src/sqlformatter/vendor-authors.R$
 ^.*\.gitkeep$

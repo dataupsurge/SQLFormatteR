@@ -9,8 +9,6 @@
 #'   be converted to uppercase (default: TRUE).
 #' @param lines_between_queries An integer specifying the number of blank
 #'   lines between queries (default: 1).
-#' @param ignore_case_convert A logical value indicating whether to
-#'   case conversion (default: NULL).
 #'
 #' @return A formatted SQL query as a character string.
 #'
@@ -19,23 +17,29 @@
 #' cat(formatted_query)
 #'
 #' @export
+#' @importFrom assertthat assert_that is.string is.count is.flag
+#' @useDynLib SQLFormatteR, sql_format_wrapper
 sql_format <- function(
     query,
     indent = 2L,
     uppercase = TRUE,
-    lines_between_queries = 1L,
-    ignore_case_convert = NULL) {
-  assertthat::assert_that(
-    assertthat::is.string(query),
-    msg = "Query must be a string!"
+    lines_between_queries = 1L) {
+  # Input validation using assertthat
+  assertthat::assert_that(assertthat::is.string(query),
+    msg = "query must be a character string"
+  )
+  assertthat::assert_that(assertthat::is.count(indent),
+    msg = "indent must be a positive integer"
+  )
+  assertthat::assert_that(assertthat::is.flag(uppercase),
+    msg = "uppercase must be TRUE or FALSE"
+  )
+  assertthat::assert_that(assertthat::is.count(lines_between_queries),
+    msg = "lines_between_queries must be a positive integer"
   )
 
-  options <- list(
-    indent = indent,
-    uppercase = uppercase,
-    lines_between_queries = lines_between_queries,
-    ignore_case_convert = ignore_case_convert
+  .Call(
+    sql_format_wrapper, query, as.integer(indent), as.logical(uppercase),
+    as.integer(lines_between_queries)
   )
-
-  sql_format_wrapper(query, options)
 }
