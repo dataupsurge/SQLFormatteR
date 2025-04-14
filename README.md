@@ -1,6 +1,6 @@
   <!-- badges: start -->
   [![Codecov test coverage](https://codecov.io/gh/dataupsurge/SQLFormatteR/graph/badge.svg)](https://app.codecov.io/gh/dataupsurge/SQLFormatteR)
-  [![R-CMD-check](https://github.com/dataupsurge/SQLFormatteR/actions/workflows/R-CMD-check/badge.svg)](https://github.com/dataupsurge/SQLFormatteR/actions/workflows/R-CMD-check)
+  [![R-CMD-check](https://github.com/dataupsurge/SQLFormatteR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/dataupsurge/SQLFormatteR/actions/workflows/R-CMD-check.yaml)
   <!-- badges: end -->
 
 # SQLFormatteR
