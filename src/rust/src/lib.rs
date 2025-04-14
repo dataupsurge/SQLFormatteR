@@ -5,7 +5,7 @@ use extendr_macros::TryFromRobj;
 use sqlformat::{FormatOptions, Indent, QueryParams};
 
 /// Options for controlling how the library formats SQL
-#[derive(Debug, Clone, TryFromRobj)] 
+#[derive(Debug, Clone, TryFromRobj)]
 struct RFormatOptions {
     pub indent: Option<usize>,
     pub uppercase: Option<bool>,
