@@ -20,11 +20,12 @@
 #'
 #' @export
 sql_format <- function(
-    query,
-    indent = 2L,
-    uppercase = TRUE,
-    lines_between_queries = 1L,
-    ignore_case_convert = NULL) {
+  query,
+  indent = 2L,
+  uppercase = TRUE,
+  lines_between_queries = 1L,
+  ignore_case_convert = NULL
+) {
   assertthat::assert_that(
     assertthat::is.string(query),
     msg = "Query must be a string!"
