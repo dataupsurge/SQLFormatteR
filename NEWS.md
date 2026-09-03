@@ -14,6 +14,8 @@
   extendr's panic hook.
 - Move the `@noRd`/`@keywords internal` roxygen tags for `sql_format_wrapper`
   into the Rust doc comment, so they survive wrapper regeneration.
+- Add a Nix flake providing a development shell with R, the Rust toolchain and
+  the package's R dependencies (`nix develop`).
 
 # SQLFormatteR 0.0.2
 
