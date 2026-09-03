@@ -1261,29 +1261,27 @@
     },
     "rextendr": {
       "Package": "rextendr",
-      "Version": "0.3.1",
+      "Version": "0.5.0",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
         "R",
         "brio",
-        "callr",
         "cli",
         "desc",
         "dplyr",
         "glue",
         "jsonlite",
+        "lifecycle",
         "pkgbuild",
         "processx",
-        "purrr",
         "rlang",
         "rprojroot",
         "stringi",
-        "tibble",
         "vctrs",
         "withr"
       ],
-      "Hash": "dd6484bee698f4d02f8d6367b099ffb9"
+      "Hash": "0db52b7e4e2875ede021b868a6b53c58"
     },
     "rhub": {
       "Package": "rhub",

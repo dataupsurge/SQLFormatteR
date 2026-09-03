@@ -1,11 +1,11 @@
 //! This is the R wrapper of https://github.com/shssoichiro/sqlformat-rs
 
 use extendr_api::prelude::*;
-use extendr_macros::TryFromRobj;
+use extendr_macros::TryFromList;
 use sqlformat::{FormatOptions, Indent, QueryParams};
 
 /// Options for controlling how the library formats SQL
-#[derive(Debug, Clone, TryFromRobj)]
+#[derive(Debug, Clone, TryFromList)]
 struct RFormatOptions {
     pub indent: Option<usize>,
     pub uppercase: Option<bool>,
@@ -24,6 +24,8 @@ impl RFormatOptions {
 }
 /// Formats whitespace in a SQL string to make it easier to read.
 /// Optionally replaces parameter placeholders with `params`.
+/// @noRd
+/// @keywords internal
 #[extendr]
 fn sql_format_wrapper(query: &str, options: RFormatOptions) -> String {
     let params = QueryParams::default();

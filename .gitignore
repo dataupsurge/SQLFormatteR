@@ -64,3 +64,12 @@ docs
 /Meta/
 src/Makevars
 src/Makevars.win
+
+# nix
+result
+result-*
+.direnv/
+
+# dev shell scratch (see flake.nix shellHook)
+.renv/
+.Rlibs/
