@@ -11,26 +11,8 @@ vendor_path := rust_src_path + '/vendor'
 default:
 	@just --list
 
-# Clean the environment
-clean-all:
-	rm -rf renv || true
-	rm -rf {{project_venv}} || true
-	rm -rf src/vendor || true
-	sed -i '/source("renv\/activate.R")/d' .Rprofile || true
-
 # Set-up dev environment
-init-dev: clean-all init-precommit init-renv
-	R -e 'renv::restore()'
-
-init-ci: init-renv
-	R -e 'renv::restore()'
-
-# Set-up renv
-init-renv:
-	rm -rf renv || true
-	sed -i '/source("renv\/activate.R")/d' .Rprofile || true
-	R -e 'renv::consent(provided = TRUE)'
-	R -e 'renv::init(bare=TRUE)'
+init-dev: init-precommit install-dev-deps
 
 # Set-up pre-commit
 init-precommit:
@@ -39,20 +21,9 @@ init-precommit:
 	{{pip}} install pre-commit
 	{{pre_commit}} install --install-hooks -t prepare-commit-msg -t pre-push -t commit-msg
 
-# Install dev dependencies
+# Install the package's development dependencies from DESCRIPTION
 install-dev-deps:
-	R -e 'renv::install()'
-
-# Should be only use to generate the first version of renv.lock
-gen-renv-dev-lock: clean-all init-precommit init-renv install-dev-deps freeze
-
-# Update dependencies
-depts-update:
-	R -e 'renv::update()'
-
-# renv snapshot
-freeze:
-	R -e 'renv::snapshot(type="all")'
+	R -e 'devtools::install_dev_deps()'
 
 # Check package
 check-pkg:
@@ -91,7 +62,7 @@ document:
 
 # Generate the AUTHORS file for rust crate vendor
 document-vendor:
-	RENV_CONFIG_SYNCHRONIZED_CHECK=false Rscript {{rust_src_path}}/vendor-authors.R -m {{rust_src_path}}/Cargo.toml -o ./inst --verbose
+	Rscript {{rust_src_path}}/vendor-authors.R -m {{rust_src_path}}/Cargo.toml -o ./inst --verbose
 
 # Style code
 style:

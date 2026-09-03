@@ -1,6 +1,4 @@
-^renv$
 ^\.venv$
-^renv\.lock$
 ^src/\.cargo$
 ^LICENSE\.md$
 ^_pkgdown\.yml$
