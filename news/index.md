@@ -20,6 +20,9 @@
   wrapper regeneration.
 - Add a Nix flake providing a development shell with R, the Rust
   toolchain and the package’s R dependencies (`nix develop`).
+- Drop `renv` from the development setup. `DESCRIPTION` is the only
+  dependency manifest now, which is what the CI workflows already
+  installed from.
 
 ## SQLFormatteR 0.0.2
 
