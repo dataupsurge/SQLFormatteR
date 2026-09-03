@@ -66,6 +66,13 @@ test-cov:
 document:
 	R -e 'devtools::document()'
 
+# The package build no longer regenerates the wrappers, because it cannot run
+# the `document` binary when cross-compiling, so this has to happen here
+# before roxygen runs.
+# Regenerate R/extendr-wrappers.R from the Rust sources
+document-wrappers:
+	cd src && cargo run --bin document --manifest-path=./rust/Cargo.toml --target-dir ./rust/target
+
 # Generate the AUTHORS file for rust crate vendor
 document-vendor:
 	Rscript {{rust_src_path}}/vendor-authors.R -m {{rust_src_path}}/Cargo.toml -o ./inst --verbose
@@ -76,7 +83,7 @@ style:
 	R -e 'styler::style_file("src/rust/vendor-authors.R")'
 
 # Build the package source
-build: build-vendor document-vendor document
+build: build-vendor document-vendor document-wrappers document
 	R -e 'devtools::build()'
 
 # Build the packdown site
