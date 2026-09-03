@@ -21,9 +21,15 @@ init-precommit:
 	{{pip}} install pre-commit
 	{{pre_commit}} install --install-hooks -t prepare-commit-msg -t pre-push -t commit-msg
 
+# In the Nix dev shell the flake provides them already, so this is a no-op
 # Install the package's development dependencies from DESCRIPTION
 install-dev-deps:
-	R -e 'devtools::install_dev_deps()'
+	#!/usr/bin/env sh
+	if [ -n "$IN_NIX_SHELL" ]; then
+		echo "Nix dev shell detected: the R packages come from flake.nix, nothing to do."
+		exit 0
+	fi
+	R -q -e 'if (!requireNamespace("pak", quietly = TRUE)) install.packages("pak"); pak::local_install_dev_deps()'
 
 # Check package
 check-pkg:
