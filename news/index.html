@@ -34,14 +34,9 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="sqlformatter-development-version">SQLFormatteR (development version)<a class="anchor" aria-label="anchor" href="#sqlformatter-development-version"></a></h2>
-<ul><li>Bump the <code>extendr</code> crates to 0.9.0, which drops the <code>R_NamespaceRegistry</code> binding. This clears the <code>R CMD check</code> NOTE “Found non-API call to R: ‘R_NamespaceRegistry’”.</li>
-<li>Re-vendor the Rust dependencies and regenerate <code>inst/AUTHORS.md</code>.</li>
-<li>
-<code>vendor-authors.R</code> now falls back to a crate’s repository when it declares no <code>authors</code>, so the <code>extendr</code> and <code>winnow</code> crates stay credited in <code>inst/AUTHORS.md</code>.</li>
-<li>Migrate the package scaffolding to <code>rextendr</code> 0.5.0. <code>R/extendr-wrappers.R</code> is now generated during the build by a small <code>document</code> binary (<code>src/rust/document.rs</code>) rather than by <code><a href="https://extendr.github.io/rextendr/reference/register_extendr.html" class="external-link">rextendr::register_extendr()</a></code>, and the package gains <code>cleanup</code>/<code>cleanup.win</code>. <code>src/entrypoint.c</code> now registers extendr’s panic hook.</li>
-<li>Move the <code>@noRd</code>/<code>@keywords internal</code> roxygen tags for <code>sql_format_wrapper</code> into the Rust doc comment, so they survive wrapper regeneration.</li>
-<li>Add a Nix flake providing a development shell with R, the Rust toolchain and the package’s R dependencies (<code>nix develop</code>).</li>
-<li>Drop <code>renv</code> from the development setup. <code>DESCRIPTION</code> is the only dependency manifest now, which is what the CI workflows already installed from.</li>
+<ul><li><p>The <code>extendr</code> crates have been bumped to 0.9.0, which drops the <code>R_NamespaceRegistry</code> binding and clears the <code>R CMD check</code> NOTE “Found non-API call to R: ‘R_NamespaceRegistry’”.</p></li>
+<li><p>The package scaffolding now uses <code>rextendr</code> 0.5.0. <code>R/extendr-wrappers.R</code> is generated during the build by a small <code>document</code> binary (<code>src/rust/document.rs</code>), and <code>src/entrypoint.c</code> registers extendr’s panic hook.</p></li>
+<li><p><code>inst/AUTHORS.md</code> now credits the <code>extendr</code> and <code>winnow</code> crates, which declare no <code>authors</code> field.</p></li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.0.2" id="sqlformatter-002">SQLFormatteR 0.0.2<a class="anchor" aria-label="anchor" href="#sqlformatter-002"></a></h2><p class="text-muted">CRAN release: 2025-04-13</p>
