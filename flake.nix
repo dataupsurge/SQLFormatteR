@@ -12,11 +12,17 @@
         "x86_64-darwin"
         "aarch64-darwin"
       ];
-      # nixpkgs currently ships rextendr 0.4.1, but the scaffolding in this
-      # package (src/rust/document.rs, the `cargo run --bin document` step in
+      # Pins for the two packages where the nixpkgs version is the wrong one:
+      #
+      # rextendr: nixpkgs ships 0.4.1, but the scaffolding in this package
+      # (src/rust/document.rs, the `cargo run --bin document` step in
       # src/Makevars.in) is the 0.5.0 layout, which is also what DESCRIPTION
-      # requires. Build 0.5.0 from CRAN instead.
-      rextendrOverlay = final: prev: {
+      # requires.
+      #
+      # roxygen2: nixpkgs ships 8.0.0, which would rewrite every Rd file and
+      # bump RoxygenNote on the next `just document`. Hold it at the version
+      # DESCRIPTION records.
+      cranPinsOverlay = final: prev: {
         rPackages = prev.rPackages.override {
           overrides = {
             rextendr = prev.rPackages.buildRPackage {
@@ -44,6 +50,30 @@
                 withr
               ];
             };
+            roxygen2 = prev.rPackages.buildRPackage {
+              pname = "roxygen2";
+              version = "7.3.2";
+              src = final.fetchurl {
+                url = "https://cran.r-project.org/src/contrib/Archive/roxygen2/roxygen2_7.3.2.tar.gz";
+                hash = "sha256-t4iHn5Eyt+LmVvRCpsWSMUZ2qb8y1qClbhVs+hraARw=";
+              };
+              propagatedBuildInputs = with prev.rPackages; [
+                brew
+                cli
+                commonmark
+                cpp11 # LinkingTo
+                desc
+                knitr
+                pkgload
+                purrr
+                R6
+                rlang
+                stringi
+                stringr
+                withr
+                xml2
+              ];
+            };
           };
         };
       };
@@ -55,7 +85,7 @@
           f (
             import nixpkgs {
               inherit system;
-              overlays = [ rextendrOverlay ];
+              overlays = [ cranPinsOverlay ];
             }
           )
         );
@@ -77,6 +107,7 @@
                 lintr
                 optparse
                 pkgdown
+                precommit
                 rextendr
                 roxygen2
                 styler
