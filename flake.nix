@@ -129,11 +129,14 @@
               checkbashisms # `R CMD check` warns about its absence otherwise
               gcc
               gnumake
+              html-tidy # `R CMD check` validates the HTML manual with `tidy`
               just
               pandoc
               pkg-config
               qpdf
-              texliveSmall # `R CMD check` builds the PDF manual
+              # `R CMD check` builds the PDF manual; the Rd code style
+              # needs inconsolata, which scheme-small omits.
+              (texliveSmall.withPackages (ps: [ ps.inconsolata ]))
               xz # `just build-vendor` compresses vendor.tar.xz
             ])
             # Headers/libraries for R packages built from source into R_LIBS_USER.
