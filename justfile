@@ -1,6 +1,5 @@
 set dotenv-load
 
-python_version := `cat .python-version`
 project_venv := '.venv'
 python := project_venv + '/bin/python'
 pip := project_venv + '/bin/pip'
