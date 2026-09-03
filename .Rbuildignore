@@ -23,3 +23,10 @@ src/vendor/*
 ^src/rust/target$
 ^src/Makevars$
 ^src/Makevars\.win$
+^flake\.nix$
+^flake\.lock$
+^\.envrc$
+^\.direnv$
+^\.renv$
+^\.Rlibs$
+^result$

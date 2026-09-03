@@ -45,20 +45,31 @@ metadata <- jsonlite::fromJSON(
 )
 packages <- metadata$packages
 stopifnot(is.data.frame(packages))
-packages <- subset(
-  packages,
-  sapply(packages$authors, length) > 0 & name != "SQLFormatteR"
-)
+packages <- subset(packages, name != "SQLFormatteR")
+# Crates that declare no `authors` (the extendr crates, for instance) are
+# credited through their repository rather than dropped from the file.
+repositories <- if (is.null(packages$repository)) {
+  rep(NA_character_, nrow(packages))
+} else {
+  as.character(packages$repository)
+}
 authors <- vapply(
-  packages$authors,
-  function(x) {
-    paste(
-      sub(" <.*>", "", x),
-      collapse = ", "
-    )
+  seq_len(nrow(packages)),
+  function(i) {
+    people <- packages$authors[[i]]
+    if (length(people) > 0) {
+      return(paste(sub(" <.*>", "", people), collapse = ", "))
+    }
+    if (!is.na(repositories[[i]])) {
+      return(paste("see", repositories[[i]]))
+    }
+    NA_character_
   },
   character(1)
 )
+has_attribution <- !is.na(authors)
+packages <- packages[has_attribution, ]
+authors <- authors[has_attribution]
 lines <- sprintf(
   "- %s %s: %s",
   packages$name,
