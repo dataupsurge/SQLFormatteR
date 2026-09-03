@@ -83,3 +83,8 @@ build-vendor:
 	rm -rf {{vendor_path}}/windows_x86_64_gnullvm/lib/* {{vendor_path}}/windows_*_msvc/lib/* {{vendor_path}}/windows_i686*/lib/*
 	cd {{rust_src_path}} && XZ_OPT='-9' tar -cJ --no-xattrs -f vendor.tar.xz vendor
 	rm -rf {{vendor_path}}
+
+# Needs a GitHub PAT; load_all() is what makes usethis see release_bullets()
+# Open the GitHub release checklist issue, e.g. `just release-issue 0.0.3`
+release-issue version:
+	R -e 'pkgload::load_all("."); usethis::use_release_issue("{{version}}")'
